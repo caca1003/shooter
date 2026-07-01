@@ -1,0 +1,24 @@
+<MainScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: '30dp'
+        spacing: '10dp'
+        MDIconButton:
+            icon:'cog'
+            pos_hint:{'top':1,"right":1}
+            icon_size:"48dp"
+        MDLabel:
+            text: "SHOOTER"
+            font_style:"H2"
+            halign:'center'
+        Image:
+            source: "assets/player.png"
+            size_hint_y: 0.6
+            allow_stretch:True
+            pos_hint:{"center_x":0.5,"center_y":0.5}
+        MDFillRoundFlatButton:
+            text: "PLAY"
+            font_size: '50sp'
+            pos_hint: {'center_x': 0.5}
+            on_release:
+                app.root.current="game"
