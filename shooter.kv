@@ -1,3 +1,4 @@
+#: set color_cosmos 0.2, 0, 0.1, 1
 <MainScreen>:
     MDBoxLayout:
         orientation: 'vertical'
@@ -22,3 +23,40 @@
             pos_hint: {'center_x': 0.5}
             on_release:
                 app.root.current="game"
+<Ship>:
+    source:"assets/player.png"
+    size_hint: None, None
+    size: dp(100), dp(100)
+<GameScreen>:
+    MDFloatLayout:
+        md_bg_color: color_cosmos
+        MDFloatLayout:
+            id: game
+            MDFloatLayout:
+                id:back
+            MDFloatLayout:
+                id: front
+                Ship:
+                    id: ship
+                    center:root.center
+        MDFloatLayout:
+            id: interface
+            MDBoxLayout:
+                spacing: dp(10)
+                padding: dp(10)
+                MDFloatingActionButton:
+                    icon: "arrow-left-bold"
+                    on_press: root.press_key("left")
+                    on_release: root.release_key("left")
+                    md_bg_color: app.theme_cls.primary_color
+                MDFloatingActionButton:
+                    icon: "arrow-right-bold"
+                    md_bg_color: app.theme_cls.primary_color
+                    on_press: root.press_key("right")
+                    on_release: root.release_key("right")
+                Widget:
+                MDFloatingActionButton:
+                    icon: "crosshairs-gps"
+                    md_bg_color: app.theme_cls.primary_color
+                    on_press: root.press_key("shot")
+                    on_release: root.release_key("shot")
