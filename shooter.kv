@@ -23,10 +23,31 @@
             pos_hint: {'center_x': 0.5}
             on_release:
                 app.root.current="game"
-<Ship>:
+<PlayerShip>:
     source:"assets/player.png"
     size_hint: None, None
     size: dp(100), dp(100)
+<EnemyShip>:
+    source:"assets/enemi.png"
+    size_hint: None, None
+    size: dp(60), dp(60)
+<GameOverScreen>:
+    MDFloatLayout:
+        md_bg_color: color_cosmos
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: '30dp'
+            spacing: '10dp'
+            MDLabel:
+                text: "GAME OVER"
+                font_style:"H2"
+                halign:'center'
+            MDFillRoundFlatButton:
+                text: "RESTART"
+                font_size: '50sp'
+                pos_hint: {'center_x': 0.5}
+                on_release:
+                    app.root.current="game"
 <GameScreen>:
     MDFloatLayout:
         md_bg_color: color_cosmos
@@ -36,9 +57,9 @@
                 id:back
             MDFloatLayout:
                 id: front
-                Ship:
+                PlayerShip:
                     id: ship
-                    center:root.center
+                    center:root.center_x,dp(150)
         MDFloatLayout:
             id: interface
             MDBoxLayout:
